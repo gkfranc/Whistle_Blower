@@ -68,6 +68,7 @@ package com.techblogon.loginexample;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -76,6 +77,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.techblogon.loginexample.instance_recorders.Audio;
 import com.techblogon.loginexample.instance_recorders.Camera;
@@ -87,13 +91,44 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private NavigationView nvDrawer;
-
     private ActionBarDrawerToggle drawerToggle;
+
+    FloatingActionButton fab_plus,fab_twitter,fab_fb;
+    Animation fab_open,fab_close,fabR_clockwise,fabR_anticlockwise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fab_plus = (FloatingActionButton)findViewById(R.id.fab_plus);
+        fab_twitter = (FloatingActionButton)findViewById(R.id.fab_twitter);
+        fab_fb = (FloatingActionButton)findViewById(R.id.fab_fb);
+
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
+        fabR_clockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_clockwise);
+        fabR_anticlockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_anticlockwise);
+
+
+        fab_plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(faisOpen)
+                {
+
+                }
+                else{
+                    fab_fb.startAnimation(fab_open);
+                    fab_twitter.startAnimation(fab_open);
+                    fab_plus.startAnimation(fab_open);
+
+
+
+                }
+            }
+        });
+
 
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
