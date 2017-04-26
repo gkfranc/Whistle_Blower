@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="#9ffa7c"
+            android:background="#957cfa"
             android:orientation="vertical"
             tools:context="com.techblogon.loginexample.MainActivity">
 
